@@ -11,12 +11,12 @@
     for($x=1;$x<1000;$x++){
       if(isPrime($x)){
         $arrIndex=count($primeNumer);
-        $primeNumer[arrIndex]=$x;
+        $primeNumer[$arrIndex]=$x;
       }
     }
 
     $printStr = "";
-    foreach($x as $num){
+    foreach($primeNumer as $num){
       if($printStr!=""){
         $printStr .= " , ";
       }

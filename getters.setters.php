@@ -12,25 +12,38 @@
         private $radius;
 
         public function __construct($radius){
-          $this->$radius=$radius;
+          $this->radius=$radius;
         }
 
-        public function __get($name){
-          if($name == 'radius'){
-            return $this->$radius;
-          }else{
-            throw new Exception("No such property defined !!");
+        public function __get($item){
+          switch($item){
+            case "radius": return $this->radius;
+                            break;
+            default:
+              throw new Exception("No such property defined !!");
           }
         }
 
+        public function __set($item,$val){
+          switch($item){
+            case "radius": $this->$item=$val;
+                            break;
+            default:
+              throw new Exception("No such property defined !!");
+          }
+        }
         public function area(){
           return pow($this->radius,2)*pi();
         }
 
-        $newCircle = new Circle(5);
-        echo "Radius : ".$this->$radius."<br/>";
-        echo "Area : ".$newCircle.area()."<br/>";
+
       }
+        $newCircle = new Circle(5);
+        echo "Area: " . $newCircle->area() . "<br/>";
+        $newCircle->radius = 10;
+        echo "New Radius: " . $newCircle->radius . "<br/>";
+        echo "New Area: " . $newCircle->area() . "<br/>";
+
      ?>
   </body>
 </html>
